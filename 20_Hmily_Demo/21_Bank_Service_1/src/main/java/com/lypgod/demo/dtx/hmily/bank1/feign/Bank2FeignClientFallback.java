@@ -3,9 +3,8 @@ package com.lypgod.demo.dtx.hmily.bank1.feign;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Administrator
- * @version 1.0
- **/
+ * @author lypgod
+ */
 @Component
 public class Bank2FeignClientFallback implements Bank2FeignClient {
     @Override

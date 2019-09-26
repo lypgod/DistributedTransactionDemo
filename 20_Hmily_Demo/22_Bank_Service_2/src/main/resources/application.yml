@@ -3,10 +3,8 @@ spring:
     name: tcc-demo-bank2
   profiles:
     active: local
-
   main:
     allow-bean-definition-overriding: true
-
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

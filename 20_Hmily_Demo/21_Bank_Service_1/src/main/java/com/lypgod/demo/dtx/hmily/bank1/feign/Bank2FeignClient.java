@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Created by Administrator.
- *
  * @author lypgod
  */
 @FeignClient(value = "tcc-demo-bank2", fallback = Bank2FeignClientFallback.class)

@@ -48,24 +48,24 @@ public class AccountInfoService {
     public void confirmMethod(String accountNo, Double amount) {
         //获取全局事务id
         String transId = HmilyTransactionContextLocal.getInstance().get().getTransId();
-        log.info("bank2 confirm begin 开始执行...xid:{}", transId);
+        log.info("bank2 confirm begin 开始执行... xid:{}", transId);
 
         if (confirmLogRepository.existsLocalConfirmLogByTxNo(transId)) {
-            log.info("bank2 confirm 已经执行，无需重复执行...xid:{}", transId);
+            log.info("bank2 confirm 已经执行，无需重复执行... xid:{}", transId);
             return;
-        } else {
-            //增加金额
-            AccountInfo accountInfo = accountInfoRepository.findByAccountNo(accountNo);
-            accountInfo.setAccountBalance(accountInfo.getAccountBalance() + amount);
-            accountInfoRepository.save(accountInfo);
-
-            //增加一条confirm日志，用于幂等
-            LocalConfirmLog confirmLog = new LocalConfirmLog();
-            confirmLog.setTxNo(transId);
-            confirmLogRepository.save(confirmLog);
-
-            log.info("bank2 confirm end 结束执行...xid:{}", transId);
         }
+
+        //增加金额
+        AccountInfo accountInfo = accountInfoRepository.findByAccountNo(accountNo);
+        accountInfo.setAccountBalance(accountInfo.getAccountBalance() + amount);
+        accountInfoRepository.save(accountInfo);
+
+        //增加一条confirm日志，用于幂等
+        LocalConfirmLog confirmLog = new LocalConfirmLog();
+        confirmLog.setTxNo(transId);
+        confirmLogRepository.save(confirmLog);
+
+        log.info("bank2 confirm end 结束执行...xid:{}", transId);
     }
 
 

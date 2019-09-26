@@ -65,6 +65,9 @@ public class AccountInfoService {
 
         // 扣减金额
         AccountInfo accountInfo = accountInfoRepository.findByAccountNo(accountNo);
+        if (accountInfo.getAccountBalance() < amount) {
+            throw new RuntimeException("bank1账户余额不足, xid:{}" + transId);
+        }
         accountInfo.setAccountBalance(accountInfo.getAccountBalance() - amount);
         accountInfoRepository.save(accountInfo);
 
