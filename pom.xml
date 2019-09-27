@@ -13,6 +13,7 @@
         <module>00_Eureka_Server</module>
         <module>10_Seata_Demo</module>
         <module>20_Hmily_Demo</module>
+        <module>30_Txmsg_Demo</module>
     </modules>
 
     <properties>

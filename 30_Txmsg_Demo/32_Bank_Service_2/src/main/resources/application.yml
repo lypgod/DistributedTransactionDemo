@@ -1,0 +1,20 @@
+server:
+  port: 56082
+  servlet:
+    context-path: /bank2
+
+spring:
+  application:
+    name: txmsg-demo-bank2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.10:3306/dtx_demo_bank2?useUnicode=true&characterEncoding=utf8
+    username: lypgod
+    password: 123456
+  jpa:
+    show-sql: true
+
+rocketmq:
+  producer:
+    group: producer_bank2
+  name-server: 192.168.2.10:9876
